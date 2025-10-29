@@ -12,15 +12,13 @@ public class UserTest {
     @Test
     public void testUserModel() throws Exception {
         // Arrange
-        UUID id = UUID.randomUUID();
         String email = "test@test.com";
         String name = "Test";
         String phone = "123456789";
         String password = "password";
         String taxId = "123456789";
-        String createdAt = "2022-01-01";
         // Act
-        var user = new User(id, email, name, phone, password, taxId, createdAt);
+        var user = new User(email, name, phone, password, taxId);
         // Assert
         // Correct types
         assertTrue(user.getId() instanceof UUID, "The user ID is not a UUID");
@@ -32,13 +30,11 @@ public class UserTest {
         assertTrue(user.getCreated_at() instanceof String, "The user created at is not a String");
         assertTrue(user.getAddresses() instanceof java.util.ArrayList, "The user addresses list is not an ArrayList");
         // Correct values
-        assertEquals(id, user.getId(), "The user ID is not the same");
         assertEquals(email, user.getEmail(), "The user email is not the same");
         assertEquals(name, user.getName(), "The user name is not the same");
         assertEquals(phone, user.getPhone(), "The user phone is not the same");
         assertEquals(password, user.getPassword(), "The user password is not the same");
         assertEquals(taxId, user.getTax_id(), "The user tax ID is not the same");
-        assertEquals(createdAt, user.getCreated_at(), "The user created at is not the same");
         assertNotNull(user.getAddresses(), "The user addresses list is null");
         assertEquals(0, user.getAddresses().size(), "The user addresses list has the different number of addresses");
     }
@@ -52,8 +48,7 @@ public class UserTest {
         String phone = "123456789";
         String password = "password";
         String taxId = "123456789";
-        String createdAt = "2022-01-01";
-        var user = new User(id, email, name, phone, password, taxId, createdAt);
+        var user = new User(email, name, phone, password, taxId);
         // Act
         var address = new Address(1, "test", "test", "UK");
         user.addAddress(address);

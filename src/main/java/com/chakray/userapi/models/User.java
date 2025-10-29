@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import com.chakray.userapi.helper.TimeHelper;
 
 public class User {
     // Fields
@@ -20,20 +21,18 @@ public class User {
     public User() { }
 
     public User(
-            UUID id,
             String email,
             String name,
             String phone,
             String password, 
-            String taxId,
-            String createdAt) {
-        this.id = id;
+            String taxId) {
+        this.id = UUID.randomUUID();
         this.email = email;
         this.name = name;
         this.phone = phone;
         this.password = password;
         this.tax_id = taxId;
-        this.created_at = createdAt;
+        this.created_at = TimeHelper.getTimeFromMadagascar();
         this.addresses = new ArrayList<>();
     }
 
@@ -70,13 +69,32 @@ public class User {
         return addresses;
     }
 
-    // Public methods
+    // public methods
 
     /**
      * Adds an address to the user
      * @param address The address to add
      */
     public void addAddress(Address address) {
-        addresses.add(address);
+        // Check if the address is not null
+        if (address != null)
+            // Add the address to the list of addresses
+            addresses.add(address);
+    }
+
+    /**
+     * Updates the user
+     * @param name The new name of the user
+     */
+    public void update(
+        String name, 
+        String email, 
+        String phone) {
+        // Update the name of the user
+        this.name = name;
+        // Update the email of the user
+        this.email = email;
+        // Update the phone of the user
+        this.phone = phone;
     }
 }

@@ -43,13 +43,11 @@ public class UserService {
         List<User> users = new ArrayList<>();
         // Create first user
         var user = new User(
-                UUID.randomUUID(),
                 "Thomas@mail.com",
                 "ThomasTest",
                 "11 1111 1111 111",
                 "password1",
-                "123456789",
-                "2005-01-01");
+                "123456789");
         // Create first address for the user
         var address = new Address(
                 1,
@@ -71,13 +69,11 @@ public class UserService {
 
         // Create second user
         user = new User(
-                UUID.randomUUID(),
                 "John@mail.com",
                 "JohnTest",
                 "22 222 222 22",
                 "password2",
-                "123456789",
-                "2010-01-01");
+                "123456789");
         // Create first address for the user
         address = new Address(
                 1,
@@ -99,13 +95,11 @@ public class UserService {
 
         // Create third user
         user = new User(
-                UUID.randomUUID(),
                 "Mary@mail.com",
                 "MaryTest",
                 "33 333 333 33",
                 "password3",
-                "123456789",
-                "2015-01-01");
+                "123456789");
         // Create first address for the user
         address = new Address(
                 1,
