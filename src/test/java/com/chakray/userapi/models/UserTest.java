@@ -2,6 +2,7 @@ package com.chakray.userapi.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.UUID;
 
@@ -21,6 +22,16 @@ public class UserTest {
         // Act
         var user = new User(id, email, name, phone, password, taxId, createdAt);
         // Assert
+        // Correct types
+        assertTrue(user.getId() instanceof UUID, "The user ID is not a UUID");
+        assertTrue(user.getEmail() instanceof String, "The user email is not a String");
+        assertTrue(user.getName() instanceof String, "The user name is not a String");
+        assertTrue(user.getPhone() instanceof String, "The user phone is not a String");
+        assertTrue(user.getPassword() instanceof String, "The user password is not a String");
+        assertTrue(user.getTax_id() instanceof String, "The user tax ID is not a String");
+        assertTrue(user.getCreated_at() instanceof String, "The user created at is not a String");
+        assertTrue(user.getAddresses() instanceof java.util.ArrayList, "The user addresses list is not an ArrayList");
+        // Correct values
         assertEquals(id, user.getId(), "The user ID is not the same");
         assertEquals(email, user.getEmail(), "The user email is not the same");
         assertEquals(name, user.getName(), "The user name is not the same");
