@@ -15,7 +15,7 @@ public class User {
     private String password;
     private String tax_id;
     private String created_at;
-    private List<Address> addresses;
+    private List<Address> addresses = new ArrayList<>();
 
     // Constructors
     public User() { }

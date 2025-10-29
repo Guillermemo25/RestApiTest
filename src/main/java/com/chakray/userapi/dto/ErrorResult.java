@@ -3,7 +3,7 @@ package com.chakray.userapi.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Model for standard error response")
-public class ErrorResponse {
+public class ErrorResult {
 
     @Schema(description = "Error code", example = "400")
     private int statusCode;
@@ -17,9 +17,9 @@ public class ErrorResponse {
     @Schema(description = "Temporal mark of the error", example = "2025-10-29T12:34:56")
     private String timestamp;
     
-    public ErrorResponse() { }
+    public ErrorResult() { }
 
-    public ErrorResponse(int statusCode, String message, String details, String timestamp) {
+    public ErrorResult(int statusCode, String message, String details, String timestamp) {
         this.statusCode = statusCode;
         this.message = message;
         this.details = details;
