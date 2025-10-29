@@ -69,4 +69,13 @@ public class User {
         return addresses;
     }
 
+    // Public methods
+
+    /**
+     * Adds an address to the user
+     * @param address The address to add
+     */
+    public void addAddress(Address address) {
+        addresses.add(address);
+    }
 }
