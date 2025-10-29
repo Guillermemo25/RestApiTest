@@ -24,22 +24,12 @@ public class UserControllerIntegrationTest {
         // Perform the request
         mockMvc.perform(get("/users")
                 .accept(MediaType.APPLICATION_JSON))
-                // Check the status code
                 .andExpect(status().isOk())
-                // Check the content type
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                // Check the response body
-                .andExpect(jsonPath("$").isNotEmpty())
-                // Check the number of users
+                .andExpect(jsonPath("$").isArray())
                 .andExpect(jsonPath("$.length()").value(3))
-                // Check the user fields
-                .andExpect(jsonPath("$[0].id").isNotEmpty())
+                .andExpect(jsonPath("$[0].name").isNotEmpty()) 
                 .andExpect(jsonPath("$[0].email").isNotEmpty())
-                .andExpect(jsonPath("$[0].phone").isNotEmpty())
-                .andExpect(jsonPath("$[0].password").isNotEmpty())
-                .andExpect(jsonPath("$[0].tax_id").isNotEmpty())
-                .andExpect(jsonPath("$[0].created_at").isNotEmpty())
-                .andExpect(jsonPath("$[0].addresses").isArray())
-                .andExpect(jsonPath("$[0].addresses.length()").isNotEmpty());
+                .andExpect(jsonPath("$[0].phone").isNotEmpty());
     }
 }

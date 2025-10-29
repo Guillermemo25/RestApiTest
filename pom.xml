@@ -53,6 +53,18 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.2.0</version>
 		</dependency>
+		 <!-- MapStruct dependencies -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>1.5.3.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>1.5.3.Final</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -67,6 +79,13 @@
 							<artifactId>lombok</artifactId>
 						</path>
 					</annotationProcessorPaths>
+					<annotationProcessorPaths>
+                    <path>
+                        <groupId>org.mapstruct</groupId>
+                        <artifactId>mapstruct-processor</artifactId>
+                        <version>1.5.3.Final</version>
+                    </path>
+                </annotationProcessorPaths>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -81,7 +100,7 @@
 					</excludes>
 				</configuration>
 			</plugin>
-		</plugins>
+    </plugins>
 	</build>
 
 </project>

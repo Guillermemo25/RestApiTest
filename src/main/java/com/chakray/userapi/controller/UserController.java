@@ -1,12 +1,15 @@
 package com.chakray.userapi.controller;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.chakray.userapi.dto.ErrorResponse;
 import com.chakray.userapi.dto.UserResult;
+import com.chakray.userapi.mapper.UserMapper;
 import com.chakray.userapi.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,9 +22,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @RestController
 public class UserController {
     private final UserService userService;
+    private final UserMapper userMapper;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserMapper userMapper) {
         this.userService = userService;
+        this.userMapper = userMapper;
     }
 
     /**
@@ -72,8 +77,10 @@ public class UserController {
             if (users.isEmpty())
                 // Return an error response
                 return ResponseEntity.noContent().build();
+            // Mapear los usuarios a UserResult
+            List<UserResult> usersResult = userMapper.usersToUsersResults(users);
             // Return the users as a list of UserResult
-            return ResponseEntity.ok(users);
+            return ResponseEntity.ok(usersResult);
         }
         catch (Exception e)
         {
