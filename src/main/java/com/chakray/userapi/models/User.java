@@ -27,6 +27,7 @@ public class User {
             String password, 
             String taxId,
             String createdAt) {
+        this.id = id;
         this.email = email;
         this.name = name;
         this.phone = phone;
