@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.chakray.userapi.helper.TimeHelper;
+import com.chakray.userapi.util.Validators;
 
 public class User {
     // Fields
@@ -26,6 +27,13 @@ public class User {
             String phone,
             String password, 
             String taxId) {
+        // Validate phone
+        if(!Validators.isValidPhone(phone))
+                throw new IllegalArgumentException("Invalid phone number format");
+        // Validate tax id
+        if(!Validators.isValidTaxId(taxId))
+                throw new IllegalArgumentException("Invalid tax id format");
+
         this.id = UUID.randomUUID();
         this.email = email;
         this.name = name;
@@ -90,6 +98,9 @@ public class User {
         String name, 
         String email, 
         String phone) {
+        // Validate phone
+        if(!Validators.isValidPhone(phone))
+                throw new IllegalArgumentException("Invalid phone number format");
         // Update the name of the user
         this.name = name;
         // Update the email of the user

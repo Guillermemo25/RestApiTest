@@ -14,9 +14,9 @@ public class UserTest {
         // Arrange
         String email = "test@test.com";
         String name = "Test";
-        String phone = "123456789";
+        String phone = "1234567890";
         String password = "password";
-        String taxId = "123456789";
+        String taxId = "AARR990101XXX";
         // Act
         var user = new User(email, name, phone, password, taxId);
         // Assert
@@ -40,20 +40,52 @@ public class UserTest {
     }
 
     @Test
+    public void testUserModel_phoneInvalid() throws Exception {
+        // Arrange
+        String email = "test@mail.com";
+        String name = "testUser";
+        String phone = "12345";
+        String password = "password";
+        String taxId = "AARR990101XXX";
+        // Act & Assert
+        try {
+            var user = new User(email, name, phone, password, taxId);
+        } catch (IllegalArgumentException e) {
+            assertEquals("Invalid phone number format", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testUserModel_taxIdInvalid() throws Exception {
+        // Arrange
+        String email = "test@mail.com";
+        String name = "testUser";
+        String phone = "1234567890";
+        String password = "password";
+        String taxId = "INVALIDTAXID";
+        // Act & Assert
+        try {
+            var user = new User(email, name, phone, password, taxId);
+        } catch (IllegalArgumentException e) {
+            assertEquals("Invalid tax id format", e.getMessage());
+        } 
+    }
+
+    @Test
     public void testAddAddress() throws Exception {
         // Arrange
-        UUID id = UUID.randomUUID();
+        int id = 1;
         String email = "test@test.com";
         String name = "Test";
-        String phone = "123456789";
+        String phone = "1234567890";
         String password = "password";
-        String taxId = "123456789";
+        String taxId = "AARR990101XXX";
         var user = new User(email, name, phone, password, taxId);
         // Act
-        var address = new Address(1, "test", "test", "UK");
+        var address = new Address(id, "test", "test", "UK");
         user.addAddress(address);
         // Assert
-        assertEquals(1, user.getAddresses().size(), "The user addresses list has the different number of addresses");
+        assertEquals(id, user.getAddresses().size(), "The user addresses list has the different number of addresses");
         assertEquals(address, user.getAddresses().get(0), "The user addresses list has the different address");
     }
 }
