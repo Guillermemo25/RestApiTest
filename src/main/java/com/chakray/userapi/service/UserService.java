@@ -178,9 +178,9 @@ public class UserService {
                 var user = new User(
                                 "Thomas@mail.com",
                                 "ThomasTest",
-                                "11 1111 1111 111",
+                                "1111111111",
                                 "password1",
-                                "123456789");
+                                "AARR112233XXX");
                 // Create first address for the user
                 var address = new Address(
                                 1,
@@ -204,9 +204,9 @@ public class UserService {
                 user = new User(
                                 "John@mail.com",
                                 "JohnTest",
-                                "22 222 222 22",
+                                "2222222222",
                                 "password2",
-                                "123456789");
+                                "AARR222222XXX");
                 // Create first address for the user
                 address = new Address(
                                 1,
@@ -230,9 +230,9 @@ public class UserService {
                 user = new User(
                                 "Mary@mail.com",
                                 "MaryTest",
-                                "33 333 333 33",
+                                "3333333333",
                                 "password3",
-                                "123456789");
+                                "AARR333333XXX");
                 // Create first address for the user
                 address = new Address(
                                 1,

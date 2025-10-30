@@ -20,9 +20,9 @@ public class UserServiceTest {
         var newUser = new User(
             "test@mail.com",
             "testUser",
-            "11 111 1111 11",
+            "1234567890",
             "password",
-            "XXXXX-XX");
+            "AARR990101XXX");
         // Act
         var addedUser = userService.addUser(newUser);
         // Assert
@@ -41,9 +41,9 @@ public class UserServiceTest {
         var duplicatedUser = new User(
             existingUser.getEmail(),
             "newUserName",
-            "22 222 2222 22",
+            "1111111111",
             "newPassword",
-            "YYYYY-YY");
+            "AARR990101XXX");
         // Act & Assert
         try {
             userService.addUser(duplicatedUser);
@@ -108,7 +108,7 @@ public class UserServiceTest {
         var existingUser = users.get(0);
         var updatedName = "updatedName";
         var updatedEmail = "updateTest@mail.com";
-        var updatedPhone = "33 333 3333 33";
+        var updatedPhone = "1111111111";
         // Act
         var user = userService.updateUser(
             existingUser.getId(),
@@ -132,7 +132,7 @@ public class UserServiceTest {
             nonExistingUserId,
             "name", 
             "test@mail.com",
-            "11111");
+            "1111111111");
         // Assert
         assertNull(user, "The user is not null");
     }
