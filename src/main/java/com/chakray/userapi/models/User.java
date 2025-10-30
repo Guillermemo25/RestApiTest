@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.chakray.userapi.helper.TimeHelper;
+import com.chakray.userapi.util.AESUtil;
 import com.chakray.userapi.util.Validators;
 
 public class User {
@@ -38,7 +39,7 @@ public class User {
         this.email = email;
         this.name = name;
         this.phone = phone;
-        this.password = password;
+        this.password = AESUtil.encrypt(password);
         this.tax_id = taxId;
         this.created_at = TimeHelper.getTimeFromMadagascar();
         this.addresses = new ArrayList<>();

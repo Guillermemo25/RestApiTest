@@ -93,9 +93,20 @@ public class UserController {
             // Map the users to UserResult
             List<UserResult> usersResult = userMapper.usersToUsersResults(users);
             // Return the users as a list of UserResult
+            return ResponseEntity.ok(usersResult);
             // TODO Return all properties for testing in postman
-            return ResponseEntity.ok(users);
-            //return ResponseEntity.ok(usersResult);
+            //return ResponseEntity.ok(users);
+        }
+        catch (IllegalArgumentException e)
+        {
+            // Return 400 Bad Request
+            ErrorResult error = new ErrorResult(
+                400, 
+                "Bad request", 
+                e.getMessage(), 
+                TimeHelper.getTimeFromMadagascar());
+            // Return an error response
+            return ResponseEntity.badRequest().body(error);
         }
         catch (Exception e)
         {
@@ -140,8 +151,14 @@ public class UserController {
     public ResponseEntity<?> postMethod(
             @RequestBody UserRequest userRequest) {
         try {
+            // FIXME map the userRequest
              // Map the users to UserResult
-            User userToAdd = userMapper.userRequestToUser(userRequest);
+            //User userToAdd = userMapper.userRequestToUser(userRequest);
+            User userToAdd = new User(userRequest.email, 
+            userRequest.name, 
+            userRequest.phone, 
+            userRequest.password, 
+            userRequest.taxId);
             // Add the user to the service
             User addedUser = userService.addUser(userToAdd);
             // Return 201 Created
